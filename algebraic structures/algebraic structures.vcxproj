@@ -127,11 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="algebraic structures.cpp" />
-    <ClCompile Include="basic_number.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="number\basic_number.cpp" />
+    <ClCompile Include="structure\basic_structure.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="basic_number.h" />
+    <ClInclude Include="number\digit_node.h" />
+    <ClInclude Include="number\basic_number.h" />
+    <ClInclude Include="number\types\natural_number.h" />
+    <ClInclude Include="structure\basic_structure.h" />
+    <ClInclude Include="structure\finite_set.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

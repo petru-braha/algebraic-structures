@@ -15,15 +15,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="algebraic structures.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="basic_number.cpp">
+    <ClCompile Include="number\basic_number.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="structure\basic_structure.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="basic_number.h">
+    <ClInclude Include="number\basic_number.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="structure\basic_structure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="structure\finite_set.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="number\digit_node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="number\types\natural_number.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
