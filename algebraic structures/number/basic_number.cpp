@@ -1,167 +1,235 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "basic_number.h"
 
-bool basic_number::insert_digit(const char& digit)
+digit_node* null = nullptr;
+
+/*#define concatenate_digit(pointer, digit)\
+{\ 
+    if(pointer->get_nr() > max_bytes)\
+        printf("error - adding digit: no more memory.\n")\
+    try{ pointer = new digit_node(digit); } catch(...){} \
+}*/
+
+#define error_handeler(msg)\
+{ printf("error: %s.\n", msg); exit(EXIT_FAILURE); }
+
+digit_node* basic_number::insert_symbol(const bool& nr, const char& digit)
 {
-    if (number == nullptr)
+    digit_node* part = nullptr;
+    if (nr == first_number) part = number0;
+    else part = number1;
+
+    if (part == nullptr)
     {
-        number = new digit_node(digit);
-        return true;
+        part = new digit_node(digit);
+        return part;
     }
 
-    digit_node* it = number;
-    while (it->)
+    digit_node* it = part, *nxt = it->next;
+    while (nxt)
     {
-        if (it->get_data == key)
-        {
-            if (value)
-                it->add_value(value);
-            return it;
-        }
-
-        entry* nxt = it->next_key;
-        if (nxt->key_name == NULL)
-        {
-            delete nxt;
-            it->next_key = new entry(key, value);
-            nxt = it->next_key;
-            nxt->next_key = new entry(NULL, NULL);
-            return nxt;
-        }
-        it = it->next_key;
+        it = nxt;
+        nxt = it->next;
     }
-    return nullptr;
 
+    nxt = new digit_node(digit);
+    it->next = nxt;
+    return it;
 }
 
-bool basic_number::remove_digit(const char& digit)
+bool basic_number::remove_symbol(const bool& nr)
 {
+    digit_node* part = nullptr;
+    if (nr == first_number) part = number0;
+    else part = number1;
 
+    if (part == nullptr)
+        return false;
+
+    digit_node* it = part, *nxt = it->next;
+    while (nxt)
+    {
+        it = nxt;
+        nxt = it->next;
+    }
+
+    delete it;
+    it = nullptr;
+    return true;
 }
 
 //-------------------------------------------------------------------------------------------
+// helper functions:
 
-/*
-
-
-//digit on index!
-basic_number& basic_number::operator *= (int nr)
+char last_digit(int& nr)
 {
-    vector<int> copy;
-    copy_vector(copy, this->number);
-    while (nr > 1) // add to this->number copy for nr times
-    {
-        bool condition = false; // addition of units exceded 9
-        int index_copy = copy.size() - 1, i = 0;
-        for (i = this->number.size() - 1; i >= 0 && index_copy >= 0; i--, index_copy--)
-        {
-            if (condition) // the previous addition was over 9
-            {
-                if (!(this->number[i] + copy[index_copy] + 1 > 9))
-                    condition = false;
-                this->number[i] = (this->number[i] + 1) % 10;
-            }
-
-            else if (this->number[i] + copy[index_copy] > 9) condition = true;
-
-            //add
-            this->number[i] = (this->number[i] + copy[index_copy]) % 10;
-        }
-
-        if (condition)
-        {
-            while (i >= 0 && this->number[i] == 9)
-            {
-                this->number[i] = 0;
-                i--; // can be -1
-            }
-
-            if (i >= 0)
-                this->number[i]++;
-            else
-                this->number.insert(this->number.begin(), 1);
-        }
-
-        nr--;
-    }
-
-    return *this;
+    char last = abs(nr) % 10;
+    nr = nr / 10;
+    return last + '0';
 }
 
-void basic_number::print() const
+void add_beginng(digit_node*& previous, digit_node*& ptr, const char& symbol)
 {
-    for (int i = 0; i < this->number.size(); i++)
-        std::cout << this->number[i];
+    digit_node* it = new digit_node(symbol);
+    it->next = ptr;
+    ptr = it;
+    if (previous)
+        previous->next = ptr;
 }
 
-*/
-
-
-
-/*
-
-Map<K, V>::pointer_entry Map<K, V>::add_key(const K& key, const V& value)
+void add_between(digit_node* ptr1, digit_node* ptr2, const int& symbol)
 {
-    if (this->first_key == nullptr)
+    if (ptr1->next != ptr2)
+        error_handeler("wrong symbols");
+
+    digit_node* middle = new digit_node(symbol);
+    middle->next = ptr2;
+    ptr1->next = middle;
+}
+
+// constructors:----------------------------------------------------------------------------- 
+
+basic_number::basic_number()
+{
+    number0 = new digit_node('0');
+    number1 = new digit_node('0');
+}
+
+basic_number::basic_number(float nr)
+{
+    number1 = new digit_node('0');
+    int integer = (int)nr; 
+
+    // concatenate integer 
+    number0 = new digit_node(last_digit(integer));
+    while (integer)
+       add_beginng(null, number0, last_digit(integer));
+    if (nr < 0) add_beginng(null, number0, '-');
+    
+    nr -= int(nr);
+    if (nr == 0) return;
+
+    insert_symbol(first_number, '.');
+    while (nr != (int)nr) // problem !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        nr *= 10;
+
+    // concatenate float points
+    integer = (int)nr;
+    digit_node* ptr = insert_symbol(first_number, last_digit(integer));
+    
+    while (integer)
+        add_beginng(ptr, ptr->next, last_digit(integer));
+}
+
+basic_number::basic_number(float nr0, float nr1) : basic_number(nr0)
+{
+    remove_symbol(secnd_number);
+    int integer = (int)nr1;
+
+    // concatenate integer to number1
+    number1 = new digit_node(last_digit(integer));
+    while (integer)
+        add_beginng(null, number1, last_digit(integer));
+    if (nr1 < 0) add_beginng(null, number1, '-');
+
+    nr1 -= integer;
+    if (nr1 == 0) return;
+
+    insert_symbol(secnd_number, '.');
+    while (nr1 != (int)nr1)
+        nr1 *= 10;
+
+    // concatenate float points
+    integer = (int)nr1;
+    digit_node* ptr = insert_symbol(secnd_number, last_digit(integer));
+    while (integer)
+        add_beginng(ptr, ptr->next, last_digit(integer));
+}
+
+basic_number::basic_number(const char* buffer)
+{
+    size_t index = 0;
+    while (buffer[index])
     {
-        this->first_key = new entry(key, value);
-        this->first_key->next_key = new entry(NULL, NULL);
-        return this->first_key;
+        insert_symbol(first_number, buffer[index]);
+        index++;
     }
 
-    entry* it = this->first_key;
+    insert_symbol(secnd_number, '0');
+}
+
+basic_number::basic_number(const char* buffer0, const char* buffer1)
+{
+    size_t index = 0;
+    while (buffer0[index])
+    {
+        insert_symbol(first_number, buffer0[index]);
+        index++;
+    }
+
+    index = 0;
+    while (buffer1[index])
+    {
+        insert_symbol(secnd_number, buffer1[index]);
+        index++;
+    }
+}
+
+// copy and move constructor
+
+basic_number::basic_number(const basic_number& nr)
+{
+    digit_node* it = nr.get_number(0);
+    
     while (it)
     {
-        if (it->key_name == key)
-        {
-            if(value)
-                it->add_value(value);
-            return it;
-        }
-
-        entry* nxt = it->next_key;
-        if (nxt->key_name == NULL)
-        {
-            delete nxt;
-            it->next_key = new entry(key, value);
-            nxt = it->next_key;
-            nxt->next_key = new entry(NULL, NULL);
-            return nxt;
-        }
-        it = it->next_key;
+        this->insert_symbol(0, it->get_data());
+        it = it->next;
     }
-    return nullptr;
+
+    it = nr.get_number(1);
+    while (it)
+    {
+        this->insert_symbol(1, it->get_data());
+        it = it->next;
+    }
 }
 
-
-
-template <class K, class V>
-bool Map<K, V>::Delete(const K& key)
+basic_number::basic_number(const basic_number&& nr) noexcept : basic_number(nr)
 {
-    if (this->first_key == nullptr)
-        return false;
-
-    entry* it = this->first_key, * nxt = it->next_key;
-    if (it->key_name == key)
-    {
-        this->first_key = nxt;
-        delete it;
-        return true;
-    }
-    while (nxt)
-    {
-        if (nxt->key_name == key)
-        {
-            entry* temp = nxt;
-            nxt = nxt->next_key;
-            it->next_key = nxt;
-            delete temp;
-            return true;
-        }
-
-        it = nxt;
-        nxt->next_key;
-    }
-    return false;
+    delete &nr;
 }
 
-*/
+//-------------------------------------------------------------------------------------------
+// constant functions: 
+
+void basic_number::print() const // has to be pure 
+{
+    printf(" ");
+    
+    digit_node* it = number0;
+    
+    while (it)
+    {
+        printf("%c", it->get_data());
+        it = it->next;
+    }
+
+    printf("/");
+    
+    it = number1;
+    while (it)
+    {
+        printf("%c", it->get_data());
+        it = it->next;
+    }
+
+    printf(" ");
+}
+
+digit_node* basic_number::get_number(const bool& nr) const
+{
+    if (nr == 0) return number0;
+    return number1;
+}

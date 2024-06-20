@@ -1,13 +1,23 @@
 #include <iostream>
 #include "number/digit_node.h"
-#include <vector>
-int main()
-{   
-    std::vector<char> integers;
-    std::string characters;
-    std::cout << integers.max_size() << ' ' << characters.max_size();
+#include "number/basic_number.h"
+
+int f(float nr)
+{
+    while (nr != (int)nr)
+        nr *= 10;
+    return nr;
 }
 
+int main()
+{   
+    std::cout << f(0.0001);
+}
+
+// TO DO:
+// child classes derived from basic_number
+
+// maximum bytes search, concatenation function for basic_number
 
 // finite sets: verific subsets, prorpietati
 // infite structures: verific proprietati, vad o forma generala a elementelor

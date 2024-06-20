@@ -1,5 +1,4 @@
 ﻿  main.cpp
-  basic_number.cpp
-  Generating Code...
-A:\projects\algebraic objects\algebraic structures\number\basic_number.cpp(6,1): error C4716: 'basic_number::insert_digit': must return a value
-A:\projects\algebraic objects\algebraic structures\number\basic_number.cpp(11,1): error C4716: 'basic_number::remove_digit': must return a value
+A:\projects\algebraic objects\algebraic structures\main.cpp(9,12): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+A:\projects\algebraic objects\algebraic structures\main.cpp(14,20): warning C4305: 'argument': truncation from 'double' to 'float'
+  algebraic structures.vcxproj -> A:\projects\algebraic objects\x64\Debug\algebraic structures.exe
