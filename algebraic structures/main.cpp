@@ -1,23 +1,22 @@
 #include <iostream>
 #include "number/digit_node.h"
 #include "number/basic_number.h"
-
-int f(float nr)
-{
-    while (nr != (int)nr)
-        nr *= 10;
-    return nr;
-}
+#include "number/types/natural_number.h"
+#pragma warning(disable:4996)
+void reduction();
+void calculate();
+void write_as_fraction();
 
 int main()
 {   
-    std::cout << f(0.0001);
+    std::cout << sizeof(basic_number);
+    return 0;
 }
 
 // TO DO:
 // child classes derived from basic_number
 
-// maximum bytes search, concatenation function for basic_number
+// bugs: initialiser with (decimals after <.>) float and float, float
 
 // finite sets: verific subsets, prorpietati
 // infite structures: verific proprietati, vad o forma generala a elementelor

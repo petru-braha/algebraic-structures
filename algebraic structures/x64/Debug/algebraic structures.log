@@ -1,4 +1,5 @@
 ﻿  main.cpp
-A:\projects\algebraic objects\algebraic structures\main.cpp(9,12): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-A:\projects\algebraic objects\algebraic structures\main.cpp(14,20): warning C4305: 'argument': truncation from 'double' to 'float'
-  algebraic structures.vcxproj -> A:\projects\algebraic objects\x64\Debug\algebraic structures.exe
+  basic_number.cpp
+  natural_number.cpp
+  Generating Code...
+A:\projects\algebraic objects\algebraic structures\number\types\natural_number.cpp(66,1): error C4716: 'natural_number::operator+': must return a value

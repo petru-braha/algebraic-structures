@@ -129,12 +129,19 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="number\basic_number.cpp" />
+    <ClCompile Include="number\types\integer.cpp" />
+    <ClCompile Include="number\types\natural_number.cpp" />
+    <ClCompile Include="number\types\rational_number.cpp" />
+    <ClCompile Include="number\types\real_number.cpp" />
     <ClCompile Include="structure\basic_structure.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="number\types\integer.h" />
     <ClInclude Include="number\digit_node.h" />
     <ClInclude Include="number\basic_number.h" />
     <ClInclude Include="number\types\natural_number.h" />
+    <ClInclude Include="number\types\rational_number.h" />
+    <ClInclude Include="number\types\real_number.h" />
     <ClInclude Include="structure\basic_structure.h" />
     <ClInclude Include="structure\finite_set.h" />
   </ItemGroup>

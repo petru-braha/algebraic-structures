@@ -1,19 +1,22 @@
 #pragma once
 #include "digit_node.h"
-//#define max_bytes 3GB
+#define KB (ull)1000
+#define MB (ull)(1000 * KB)
+#define GB (ull)(1000 * MB)
+#define max_bytes (ull)(GB + GB + GB)
 
-#define first_number 0 // for bool parameters
-#define secnd_number 1
+#define error_handeler(msg)\
+{ printf("error: %s.\n", msg); return(-1); }
 
 class basic_number // the most general number, abstract class => complex
 {
 protected:
-    digit_node* number0 = nullptr;  // root of the linked list. list goes from right to left
-    digit_node* number1 = nullptr;
+    digit_node* number = nullptr;  // root of the linked list. list goes from right to left
+    ull bytes;
 
     // at the end
-    digit_node* insert_symbol(const bool& nr, const char& symbol);
-    bool        remove_symbol(const bool& nr);
+    digit_node* insert_symbol(const char& symbol); // returns the previous before the added one
+    bool        remove_symbol();
 
 public:
     basic_number();
@@ -26,10 +29,45 @@ public:
     basic_number(const basic_number& nr);
     basic_number(const basic_number&& nr) noexcept;
 
-    digit_node* get_number(const bool& nr) const;
-    void print() const;
+    // pure functions
+    virtual basic_number& operator + (const float& nr) = 0;
+    virtual basic_number& operator + (const basic_number& nr) = 0;
+    virtual basic_number& operator - (const float& nr) = 0;
+    virtual basic_number& operator - (const basic_number& nr) = 0;
 
-    //virtual void print() const = 0;
-    //virtual ~basic_number() = 0;
+    virtual basic_number& operator * (const float& nr) = 0;
+    virtual basic_number& operator * (const basic_number& nr) = 0;
+    virtual basic_number& operator / (const float& nr) = 0;
+    virtual basic_number& operator / (const basic_number& nr) = 0;
+
+    virtual bool operator == (const float& nr) = 0;
+    virtual bool operator == (basic_number* nr) = 0;
+
+    virtual basic_number& operator += (const float& nr) = 0;
+    virtual basic_number& operator += (basic_number* nr) = 0;
+    virtual basic_number& operator -= (const float& nr) = 0;
+    virtual basic_number& operator -= (basic_number* nr) = 0;
+
+    virtual basic_number& operator *= (const float& nr) = 0;
+    virtual basic_number& operator *= (basic_number* nr) = 0;
+    virtual basic_number& operator /= (const float& nr) = 0;
+    virtual basic_number& operator /= (basic_number* nr) = 0;
+
+
+    // if possible (small enough)
+    virtual operator int() const;
+    virtual operator float() const;
+
+    digit_node* get_digit(ull i) const;
+    digit_node* get_number() const;
+    ull         get_bytes () const;
+    virtual void print() const = 0;
 };
-///basic_number::~basic_number(){}
+
+int concatenation(digit_node*& ptr, const char& symbol, ull& bytes);
+
+char last_digit(int& nr);
+void add_beginng(digit_node*& previous, digit_node*& ptr, const char& symbol);
+int  add_between(digit_node*& ptr1, digit_node* ptr2, const int& symbol);
+
+const char* convert_float(float nr);

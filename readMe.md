@@ -5,6 +5,7 @@
 ### Implementation:
 - extend the number to a maximum capacity of 3GB, where a single digit takes up 1B.
 - limit the maximum number of bytes taking into account, how many RAM GB is free.
+- good practice! reduce before any operation the fractions
 
 ### Journal:
 1. i have decided to not procced with the analysis of infite sets. 
@@ -41,3 +42,22 @@ for C, both will be represented by R, but there will be an operation of reductio
 
 in basic number the 2 buffers will be represented by 2 R
 restrictions will appear only in child classes
+
+5. a input restriction for the real numbers: the periodic numbers will only be available as a computations' result, never as an input.
+
+6. reduction function, for rational numbers. for the real numbers it is packed with a calculation function which will take care of the period
+
+- period will be represented by ()
+- fraction => real number with period
+- real number with period => fraction
+
+7. i was wrong with the implementation of the second number
+- C should contain 2 basic_number pointers
+- 
+
+
+8. simple numbers = int, float, etc
+- constructor from simple number to basic_number
+- constructor from const char* to basic_number
+- operator int() and float() from basic_number to simple number
+- conversion function from simple number to const char*
