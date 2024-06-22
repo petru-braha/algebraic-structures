@@ -16,6 +16,7 @@ protected:
 
     // at the end
     digit_node* insert_symbol(const char& symbol); // returns the previous before the added one
+    digit_node* insert_symbol(digit_node* previous, const char& symbol); // returns thr added one
     bool        remove_symbol();
 
 public:
@@ -31,30 +32,20 @@ public:
 
     // pure functions
     virtual basic_number& operator + (const float& nr) = 0;
-    virtual basic_number& operator + (const basic_number& nr) = 0;
+    virtual basic_number& operator + (const basic_number* nr) = 0;
     virtual basic_number& operator - (const float& nr) = 0;
-    virtual basic_number& operator - (const basic_number& nr) = 0;
+    virtual basic_number& operator - (const basic_number* nr) = 0;
 
     virtual basic_number& operator * (const float& nr) = 0;
-    virtual basic_number& operator * (const basic_number& nr) = 0;
+    virtual basic_number& operator * (const basic_number* nr) = 0;
     virtual basic_number& operator / (const float& nr) = 0;
-    virtual basic_number& operator / (const basic_number& nr) = 0;
+    virtual basic_number& operator / (const basic_number* nr) = 0;
 
     virtual bool operator == (const float& nr) = 0;
     virtual bool operator == (basic_number* nr) = 0;
 
-    virtual basic_number& operator += (const float& nr) = 0;
-    virtual basic_number& operator += (basic_number* nr) = 0;
-    virtual basic_number& operator -= (const float& nr) = 0;
-    virtual basic_number& operator -= (basic_number* nr) = 0;
 
-    virtual basic_number& operator *= (const float& nr) = 0;
-    virtual basic_number& operator *= (basic_number* nr) = 0;
-    virtual basic_number& operator /= (const float& nr) = 0;
-    virtual basic_number& operator /= (basic_number* nr) = 0;
-
-
-    // if possible (small enough)
+    // if possible (small enough) else returns -1
     virtual operator int() const;
     virtual operator float() const;
 
@@ -67,7 +58,11 @@ public:
 int concatenation(digit_node*& ptr, const char& symbol, ull& bytes);
 
 char last_digit(int& nr);
+void add_beginng(digit_node*& ptr, const char& symbol);
 void add_beginng(digit_node*& previous, digit_node*& ptr, const char& symbol);
 int  add_between(digit_node*& ptr1, digit_node* ptr2, const int& symbol);
 
 const char* convert_float(float nr);
+inline int digits_number(ull nr);
+inline int bytes_number(float nr);
+//operator int(floar nr);

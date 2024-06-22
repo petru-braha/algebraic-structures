@@ -1,5 +1,6 @@
 A:\projects\algebraic objects\algebraic structures\main.cpp;A:\projects\algebraic objects\algebraic structures\x64\Debug\main.obj
 A:\projects\algebraic objects\algebraic structures\number\basic_number.cpp;A:\projects\algebraic objects\algebraic structures\x64\Debug\basic_number.obj
+A:\projects\algebraic objects\algebraic structures\number\types\complex_number.cpp;A:\projects\algebraic objects\algebraic structures\x64\Debug\complex_number.obj
 A:\projects\algebraic objects\algebraic structures\number\types\integer.cpp;A:\projects\algebraic objects\algebraic structures\x64\Debug\integer.obj
 A:\projects\algebraic objects\algebraic structures\number\types\natural_number.cpp;A:\projects\algebraic objects\algebraic structures\x64\Debug\natural_number.obj
 A:\projects\algebraic objects\algebraic structures\number\types\rational_number.cpp;A:\projects\algebraic objects\algebraic structures\x64\Debug\rational_number.obj

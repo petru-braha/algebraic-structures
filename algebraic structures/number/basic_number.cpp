@@ -47,6 +47,16 @@ digit_node* basic_number::insert_symbol(const char& digit)
     return it;
 }
 
+digit_node* basic_number::insert_symbol(digit_node* previous, const char& symbol)
+{
+    if (previous == nullptr)
+        return nullptr;
+    if (previous->next)
+        delete previous->next;
+    concatenation(previous->next, symbol, this->bytes);
+    return previous->next;
+}
+
 bool basic_number::remove_symbol()
 {
     if (number == nullptr)
@@ -73,6 +83,13 @@ char last_digit(int& nr)
     char last = abs(nr) % 10;
     nr = nr / 10;
     return last + '0';
+}
+
+void add_beginng(digit_node*& ptr, const char& symbol)
+{
+    digit_node* it = new digit_node(symbol);
+    it->next = ptr;
+    ptr = it;
 }
 
 void add_beginng(digit_node*& previous, digit_node*& ptr, const char& symbol)
@@ -440,4 +457,23 @@ digit_node* basic_number::get_digit(ull i) const
     if (i)
         return nullptr;
     return it;
+}
+
+inline int bytes_number(float nr)
+{
+    int bytes = 0;
+    if (nr < 0)
+        bytes++;
+    int i = 0;
+    while (nr != (int)nr && i++ < 2) // accepting only two floating points
+        bytes++;
+        
+    while (nr > 10)
+    {
+        bytes++;
+        nr /= 10;
+    }
+
+    bytes++; // last digit before the point
+    return bytes;
 }

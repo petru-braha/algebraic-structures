@@ -24,20 +24,7 @@ public:
     bool operator == (const float& nr);
     bool operator == (basic_number* nr);
 
-    basic_number& operator += (const float& nr);
-    basic_number& operator += (basic_number* nr);
-    basic_number& operator -= (const float& nr);
-    basic_number& operator -= (basic_number* nr);
-
-    basic_number& operator *= (const float& nr);
-    basic_number& operator *= (basic_number* nr);
-    basic_number& operator /= (const float& nr);
-    basic_number& operator /= (basic_number* nr);
-
-    void abs();
     operator int() const; 
-    operator float() const;
-
     void print() const;
     ~natural_number();
 };

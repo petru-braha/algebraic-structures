@@ -1,5 +1,2 @@
 ﻿  main.cpp
-  basic_number.cpp
-  natural_number.cpp
-  Generating Code...
-A:\projects\algebraic objects\algebraic structures\number\types\natural_number.cpp(66,1): error C4716: 'natural_number::operator+': must return a value
+  algebraic structures.vcxproj -> A:\projects\algebraic objects\x64\Debug\algebraic structures.exe

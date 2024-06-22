@@ -2,14 +2,18 @@
 #include "number/digit_node.h"
 #include "number/basic_number.h"
 #include "number/types/natural_number.h"
-#pragma warning(disable:4996)
+
+/*
 void reduction();
 void calculate();
 void write_as_fraction();
+*/
 
 int main()
 {   
-    std::cout << sizeof(basic_number);
+    natural_number x(15);
+    x + 5.0f;
+    x.print();
     return 0;
 }
 

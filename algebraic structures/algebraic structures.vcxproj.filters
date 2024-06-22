@@ -36,6 +36,9 @@
     <ClCompile Include="number\types\real_number.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="number\types\complex_number.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="number\basic_number.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="number\types\real_number.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="number\types\complex_number.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

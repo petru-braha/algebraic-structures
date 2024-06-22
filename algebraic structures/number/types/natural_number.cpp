@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include "natural_number.h"
 
-digit_node* null = nullptr;
-
 //---------------------------------------------------------------------------------------------------
 // constructors:
 
@@ -16,7 +14,7 @@ natural_number::natural_number(float nr) : basic_number(nr)
     concatenation(number, last_digit(integer), bytes);
     while (integer) 
     {
-        add_beginng(null, number, last_digit(integer));
+        add_beginng(number, last_digit(integer));
         bytes++;
     }
 }
@@ -44,13 +42,19 @@ natural_number::natural_number(basic_number* nr) // should not be done by castin
 //---------------------------------------------------------------------------------------------------
 // operators:
 
-
 basic_number& natural_number::operator + (const float& nr)
 {
-    int integer = abs(int(nr));
+    // operator -
+    if (nr < 0)
+    {
+        *this - nr;
+        return *this;
+    }
+
+    int integer = int(nr);
     while (integer)
     {
-        add_beginng(null, number, last_digit(integer));
+        add_beginng(number, last_digit(integer));
         bytes++;
     }
 
@@ -101,78 +105,150 @@ basic_number& natural_number::operator + (const basic_number* nr)
     }
 
     if (carry)
-        add_beginng(null, number, '1');
+        add_beginng(number, '1');
     return *this;
 }
 
-//basic_number& natural_number::operator - (const float& nr);
-//basic_number& natural_number::operator - (const basic_number* nr);
-/*/
-basic_number& operator * (const float& nr);
-basic_number& operator * (const basic_number* nr);
-basic_number& operator / (const float& nr);
-basic_number& operator / (const basic_number* nr);
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-bool operator == (const float& nr);
-bool operator == (basic_number* nr);
+basic_number& natural_number::operator - (const float& nr)
+{
+    // operator +
+    if (nr < 0)
+    {
+        *this + (-1) * nr;
+        return *this;
+    }
 
-basic_number& operator += (const float& nr);
-basic_number& operator += (basic_number* nr);
-basic_number& operator -= (const float& nr);
-basic_number& operator -= (basic_number* nr);
+    if (digits_number(int(nr)) > this->bytes)
+    {
+        // delete number
+        // add 0
+    }
 
-basic_number& operator *= (const float& nr);
-basic_number& operator *= (basic_number* nr);
-basic_number& operator /= (const float& nr);
-basic_number& operator /= (basic_number* nr);
-*/
+    int integer = int(nr);
+    while (integer)
+    {
+        add_beginng(number, last_digit(integer));
+        bytes++;
+    }
 
+
+    return *this;
+
+}
+
+basic_number& natural_number::operator - (const basic_number* nr)
+{
+    return *this;
+
+}
+
+basic_number& natural_number::operator * (const float& nr)
+{
+    natural_number copy(this);
+    for (int i = 0; i < nr; i++)
+        *this + copy;
+    
+    if (nr < 0)
+        add_beginng(number, '-');
+    //nr = nr - (int)nr;
+    return *this;
+}
+
+basic_number& natural_number::operator * (const basic_number* nr)
+{
+
+    return *this;
+}
+
+basic_number& natural_number::operator / (const float& nr)
+{
+    return *this;
+}
+
+basic_number& natural_number::operator / (const basic_number* nr)
+{
+    return *this;
+}
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+bool natural_number::operator == (const float& nr)
+{
+    if ((nr < 0 && number->get_data() != '-') || (nr > 0 && number->get_data() == '-'))
+        return false;
+
+    int integer = (int)nr;
+    if (this->bytes != digits_number(integer))
+        return false;
+
+    int power = 1;
+    while (power * 10 <= integer)
+        power *= 10;
+
+    digit_node* it = number;
+    while (integer)
+    {
+        char digit = integer / power + '0';
+        if (digit != it->get_data())
+            return false;
+
+        integer /= 10;
+        power /= 10;
+        it = it->next;
+    }
+
+    return true;
+}
+
+bool natural_number::operator == (basic_number* nr)
+{
+    if (this->bytes != nr->get_bytes() || nr->get_number()->get_data() == '-')
+        return false;
+
+    digit_node* it = number, * it_nr = nr->get_number();
+    while (it)
+    {
+        if (it->get_data() != it_nr->get_data())
+            return false;
+
+        it = it->next;
+        it_nr = it_nr->next;
+    }
+
+    return true;
+}
 
 //---------------------------------------------------------------------------------------------------
 // constant functions:
 
-
-/*
-basic_number& basic_number::operator *= (int nr)
+natural_number::operator int() const
 {
-    vector<int> copy;
-    copy_vector(copy, this->number);
-    while (nr > 1) // add to this->number copy for nr times
+    int result = int(*this);
+    if (result == -1) 
+        return -1;
+    return abs(result);
+}
+
+void natural_number::print() const
+{
+    digit_node* it = number;
+    while (it)
     {
-        bool condition = false; // addition of units exceded 9
-        int index_copy = copy.size() - 1, i = 0;
-        for (i = this->number.size() - 1; i >= 0 && index_copy >= 0; i--, index_copy--)
-        {
-            if (condition) // the previous addition was over 9
-            {
-                if (!(this->number[i] + copy[index_copy] + 1 > 9))
-                    condition = false;
-                this->number[i] = (this->number[i] + 1) % 10;
-            }
-
-            else if (this->number[i] + copy[index_copy] > 9) condition = true;
-
-            //add
-            this->number[i] = (this->number[i] + copy[index_copy]) % 10;
-        }
-
-        if (condition)
-        {
-            while (i >= 0 && this->number[i] == 9)
-            {
-                this->number[i] = 0;
-                i--; // can be -1
-            }
-
-            if (i >= 0)
-                this->number[i]++;
-            else
-                this->number.insert(this->number.begin(), 1);
-        }
-
-        nr--;
+        printf("%c", it->get_data());
+        it = it->next;
     }
 
-    return *this;
+    printf(" ");
 }
-*/
+
+natural_number::~natural_number()
+{
+    while (number)
+    {
+        digit_node* it = number->next;
+        delete number;
+        number = it;
+    }
+}

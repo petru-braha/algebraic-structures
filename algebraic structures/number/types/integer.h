@@ -9,31 +9,20 @@ class integer : public basic_number
 public:
     integer();
     integer(float nr);
-    integer
+    integer(basic_number* nr);
 
     basic_number& operator + (const float& nr);
-    basic_number& operator + (const basic_number& nr);
+    basic_number& operator + (const basic_number* nr);
     basic_number& operator - (const float& nr);
-    basic_number& operator - (const basic_number& nr);
+    basic_number& operator - (const basic_number* nr);
 
     basic_number& operator * (const float& nr);
-    basic_number& operator * (const basic_number& nr);
+    basic_number& operator * (const basic_number* nr);
     basic_number& operator / (const float& nr);
-    basic_number& operator / (const basic_number& nr);
+    basic_number& operator / (const basic_number* nr);
 
     bool operator == (const float& nr);
     bool operator == (basic_number* nr);
-
-    basic_number& operator += (const float& nr);
-    basic_number& operator += (basic_number* nr);
-    basic_number& operator -= (const float& nr);
-    basic_number& operator -= (basic_number* nr);
-
-    basic_number& operator *= (const float& nr);
-    basic_number& operator *= (basic_number* nr);
-    basic_number& operator /= (const float& nr);
-    basic_number& operator /= (basic_number* nr);
-
 
     operator int() const; // la fel ca cel origin dar! in modul
     operator float() const;
