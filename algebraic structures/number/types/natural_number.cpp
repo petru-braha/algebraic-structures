@@ -50,21 +50,50 @@ basic_number& natural_number::operator + (const float& nr)
         *this - nr;
         return *this;
     }
-
+    
+    // delete floating ooints
     int integer = int(nr);
-    while (integer)
+
+    // addition with a natural number
+    natural_number* this_number = new natural_number(*this);
+    ull b = this->bytes - 1;
+    char carry = 0;
+    bool flag = true; // represents if b == -1
+    while (integer && flag)
     {
-        add_beginng(number, last_digit(integer));
-        bytes++;
+        digit_node* actual = this_number->get_digit(b);
+        char digit = last_digit(integer) - '0' + actual->get_data() - '0';
+
+        // set
+        actual->set_data((digit + carry) % 10 + '0');
+        carry = digit / 10;
+
+        if (b)
+            b--;
+        else
+            flag = false;
     }
 
-    return *this;
+    // carry
+    if (carry)
+    {
+        if (flag == true)
+        {
+            digit_node* ptr = this_number->get_digit(b);
+            char data = ptr->get_data();
+            ptr->set_data(data + carry);
+        }
+        else add_beginng(this_number->number, '1');
+    }
+    
+    this_number->print();
+    return *this_number;
 }
 
-basic_number& natural_number::operator + (const basic_number* nr)
+basic_number& natural_number::operator + (const basic_number& nr)
 {
     // operator -
-    if (nr->get_number()->get_data() == '-')
+    if (nr.get_number()->get_data() == '-')
     {
         *this - nr;
         return *this;
@@ -72,36 +101,39 @@ basic_number& natural_number::operator + (const basic_number* nr)
 
     // delete floating points
     ull n_nr = 0;
-
-    digit_node* it = nr->get_number();
-    while (it->get_data() != '.' && it)
+    digit_node* it = nr.get_number();
+    while (it && it->get_data() != '.')
     {
         it = it->next;
         n_nr++;
     }
-    
-    // addition with a natural number
-    ull n = this->bytes > n_nr ? this->bytes : n_nr;
-    char carry = 0;
 
-    while (n)
+    // addition with a natural number
+    ull n = this->bytes;
+    char carry = 0;
+    
+    while (n && n_nr)
     {
+        // get the last digits
         n--;
         n_nr--;
         digit_node* it = this->get_digit(n);
-        digit_node* it_nr = nr->get_digit(n_nr);
-        bool flag = false;
+        digit_node* it_nr = nr.get_digit(n_nr);
 
         char d1 = it->get_data(), d2 = it_nr->get_data(), D = d1 + d2 - 2 * '0';
-        if (D >= 10)
-        {
-            D = D % 10;
-            flag = true;
-        }
-        
-        D += '0';
-        it->set_data(D + carry);
-        carry = flag == true ? 1 : 0;
+        it->set_data((D + carry) % 10 + '0');
+        carry = D / 10;
+    }
+
+    // nr > this->number
+    while (n_nr)
+    {
+        n_nr--;
+        digit_node* it_nr = nr.get_digit(n_nr);
+        char digit = it_nr->get_data() - '0';
+
+        add_beginng(number, (digit + carry) % 10 + '0');
+        carry = digit / 10;
     }
 
     if (carry)
@@ -120,25 +152,53 @@ basic_number& natural_number::operator - (const float& nr)
         return *this;
     }
 
+    // nr greater than this->number
     if (digits_number(int(nr)) > this->bytes)
-    {
-        // delete number
-        // add 0
-    }
+        reinitialise(number);
 
+    // delete floating points
     int integer = int(nr);
-    while (integer)
+   
+    // subtraction with a natural number
+    ull b = this->bytes - 1;
+    char carry = 0;
+    bool flag = true;
+    while (integer && flag)
     {
-        add_beginng(number, last_digit(integer));
-        bytes++;
+        digit_node* actual = this->get_digit(b);
+        char digit = actual->get_data() - '0' - last_digit(integer) - '0';
+
+        // set
+        actual->set_data(abs(digit - carry) + '0');
+        carry = digit - carry < 0 ? 1 : 0;
+
+        if (b)
+            b--;
+        else
+            flag = false;
     }
 
+    // carry - nr > this->number
 
+    while (carry && flag)
+    {
+        digit_node* actual = this->get_digit(b);
+        char digit = actual->get_data() - '0';
+        actual->set_data(abs(digit - carry) + '0');
+        carry = digit - carry < 0 ? 1 : 0;
+
+        if (b)
+            b--;
+        else
+            flag = false;
+    }
+
+    if (carry && flag == false)
+        reinitialise(number);
     return *this;
-
 }
 
-basic_number& natural_number::operator - (const basic_number* nr)
+basic_number& natural_number::operator - (const basic_number& nr)
 {
     return *this;
 
@@ -147,18 +207,27 @@ basic_number& natural_number::operator - (const basic_number* nr)
 basic_number& natural_number::operator * (const float& nr)
 {
     natural_number copy(this);
-    for (int i = 0; i < nr; i++)
+    for (int i = 0; i < cast_float(nr); i++)
         *this + copy;
     
     if (nr < 0)
         add_beginng(number, '-');
-    //nr = nr - (int)nr;
     return *this;
 }
 
-basic_number& natural_number::operator * (const basic_number* nr)
+basic_number& natural_number::operator * (const basic_number& nr)
 {
+    natural_number copy(this);
+    natural_number it, n(cast_float(nr));
+    while ( (it == n) == false )
+    {
+        float one = 1.0f;
+        *this + copy;
+        it + one;
+    }
 
+    if (nr.get_number()->get_data() == '0')
+        add_beginng(number, '-');
     return *this;
 }
 
@@ -167,7 +236,7 @@ basic_number& natural_number::operator / (const float& nr)
     return *this;
 }
 
-basic_number& natural_number::operator / (const basic_number* nr)
+basic_number& natural_number::operator / (const basic_number& nr)
 {
     return *this;
 }
@@ -176,7 +245,7 @@ basic_number& natural_number::operator / (const basic_number* nr)
 
 bool natural_number::operator == (const float& nr)
 {
-    if ((nr < 0 && number->get_data() != '-') || (nr > 0 && number->get_data() == '-'))
+    if (nr < 0 || nr != (int)nr)
         return false;
 
     int integer = (int)nr;
@@ -188,7 +257,7 @@ bool natural_number::operator == (const float& nr)
         power *= 10;
 
     digit_node* it = number;
-    while (integer)
+    while (integer && it)
     {
         char digit = integer / power + '0';
         if (digit != it->get_data())

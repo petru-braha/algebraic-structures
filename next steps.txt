@@ -1,7 +1,7 @@
-1. add "virtual operator = ()" for basic_number;
-2. implement operators for natural numbers and integers
-3. implement rational, real, complex numbers classes
-4. implement the finite set class 
-5. implement the structures
+- add "virtual operator = ()" for basic_number;
+- implement operators for natural numbers and integers
+- implement rational, real, complex numbers classes
+- implement the finite set class 
+- implement the structures
 
 * operator int(float nr) - which should return the closest integer

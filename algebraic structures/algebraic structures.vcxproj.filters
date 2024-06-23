@@ -39,6 +39,12 @@
     <ClCompile Include="number\types\complex_number.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="structure\operation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="structure\finite_set.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="number\basic_number.h">
@@ -66,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="number\types\complex_number.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="structure\operation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

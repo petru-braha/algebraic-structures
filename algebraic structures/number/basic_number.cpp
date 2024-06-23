@@ -52,8 +52,8 @@ digit_node* basic_number::insert_symbol(digit_node* previous, const char& symbol
     if (previous == nullptr)
         return nullptr;
     if (previous->next)
-        delete previous->next;
-    concatenation(previous->next, symbol, this->bytes);
+        previous->next->set_data(symbol);
+    else concatenation(previous->next, symbol, this->bytes);
     return previous->next;
 }
 
@@ -241,6 +241,62 @@ basic_number::basic_number(const basic_number& nr)
 basic_number::basic_number(const basic_number&& nr) noexcept : basic_number(nr)
 {
     delete &nr;
+}
+
+basic_number& basic_number::operator = (float& nr)
+{
+    reinitialise(number);
+    bytes = 0;
+    int integer = (int)nr;
+
+    // concatenate integer 
+    insert_symbol(last_digit(integer));
+    while (integer) {
+        add_beginng(null, number, last_digit(integer));
+        bytes++;
+    }
+    if (nr < 0) { add_beginng(null, number, '-'); bytes++; }
+
+    nr -= int(nr);
+    if (nr == 0) return *this;
+
+    insert_symbol('.');
+    int i = 0;
+    while (nr != (int)nr && i++ < 2) // problem !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        nr *= 10;
+
+    // concatenate float points
+    integer = (int)nr;
+    digit_node* ptr = insert_symbol(last_digit(integer));
+
+    while (integer)
+    {
+        add_beginng(ptr, ptr->next, last_digit(integer));
+        bytes++;
+    }
+
+    return *this;
+}
+
+basic_number& basic_number::operator = (const basic_number& nr)
+{
+    digit_node* it_nr = nr.get_number();
+    reinitialise(number);
+    bytes = 0;
+
+    char digit = it_nr->get_data();
+    insert_symbol(digit);
+    
+    digit_node* it = number;
+    while (it_nr)
+    {
+        char digit = it_nr->get_data();
+        insert_symbol(it, digit);
+        it_nr = it_nr->next;
+        it = it->next;
+    }
+
+    return *this;
 }
 
 //-------------------------------------------------------------------------------------------
@@ -476,4 +532,25 @@ inline int bytes_number(float nr)
 
     bytes++; // last digit before the point
     return bytes;
+}
+
+void reinitialise(digit_node*& root)
+{
+    digit_node* root_copy = root;
+    while (root_copy)
+    {
+        digit_node* it = root_copy->next;
+        delete root_copy;
+        root_copy = it;
+    }
+
+    root = new digit_node('0');
+}
+
+int cast_float(float nr)
+{
+    nr *= 10;
+    int integer = (int)nr;
+    integer = integer % 10;
+    return integer >= 5 ? (int)nr + 1 : (int)nr;
 }

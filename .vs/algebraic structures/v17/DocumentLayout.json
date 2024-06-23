@@ -3,32 +3,28 @@
   "WorkspaceRootPath": "A:\\projects\\algebraic objects\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|A:\\projects\\algebraic objects\\algebraic structures\\number\\basic_number.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|solutionrelative:algebraic structures\\number\\basic_number.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\natural_number.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|solutionrelative:algebraic structures\\number\\types\\natural_number.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|A:\\projects\\algebraic objects\\algebraic structures\\number\\basic_number.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|solutionrelative:algebraic structures\\number\\basic_number.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\natural_number.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|solutionrelative:algebraic structures\\number\\types\\natural_number.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|A:\\projects\\algebraic objects\\algebraic structures\\number\\basic_number.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|solutionrelative:algebraic structures\\number\\basic_number.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|A:\\projects\\algebraic objects\\algebraic structures\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|solutionrelative:algebraic structures\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\integer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|solutionrelative:algebraic structures\\number\\types\\integer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|A:\\projects\\algebraic objects\\algebraic structures\\structure\\operation.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|solutionrelative:algebraic structures\\structure\\operation.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\integer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|solutionrelative:algebraic structures\\number\\types\\integer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|A:\\projects\\algebraic objects\\algebraic structures\\structure\\finite_set.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5432FA2A-8E96-425A-9EB4-9C9238D6AF60}|algebraic structures\\algebraic structures.vcxproj|solutionrelative:algebraic structures\\structure\\finite_set.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,90 +33,53 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 456,
+          "DockedWidth": 374,
           "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "main.cpp",
-              "DocumentMoniker": "A:\\projects\\algebraic objects\\algebraic structures\\main.cpp",
-              "RelativeDocumentMoniker": "algebraic structures\\main.cpp",
-              "ToolTip": "A:\\projects\\algebraic objects\\algebraic structures\\main.cpp",
-              "RelativeToolTip": "algebraic structures\\main.cpp",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAAAgAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-19T13:08:23.98Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "natural_number.cpp",
-              "DocumentMoniker": "A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\natural_number.cpp",
-              "RelativeDocumentMoniker": "algebraic structures\\number\\types\\natural_number.cpp",
-              "ToolTip": "A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\natural_number.cpp",
-              "RelativeToolTip": "algebraic structures\\number\\types\\natural_number.cpp",
-              "ViewState": "AQIAAGkAAAAAAAAAAAAwwH8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-21T10:55:52.722Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "natural_number.h",
               "DocumentMoniker": "A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\natural_number.h",
               "RelativeDocumentMoniker": "algebraic structures\\number\\types\\natural_number.h",
               "ToolTip": "A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\natural_number.h",
               "RelativeToolTip": "algebraic structures\\number\\types\\natural_number.h",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-21T08:15:06.781Z",
+              "WhenOpened": "2024-06-23T14:50:33.456Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "integer.cpp",
-              "DocumentMoniker": "A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\integer.cpp",
-              "RelativeDocumentMoniker": "algebraic structures\\number\\types\\integer.cpp",
-              "ToolTip": "A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\integer.cpp",
-              "RelativeToolTip": "algebraic structures\\number\\types\\integer.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAACAAAA",
+              "DocumentIndex": 0,
+              "Title": "natural_number.cpp",
+              "DocumentMoniker": "A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\natural_number.cpp",
+              "RelativeDocumentMoniker": "algebraic structures\\number\\types\\natural_number.cpp",
+              "ToolTip": "A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\natural_number.cpp",
+              "RelativeToolTip": "algebraic structures\\number\\types\\natural_number.cpp",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAwwFgAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-21T15:59:51.391Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "integer.h",
-              "DocumentMoniker": "A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\integer.h",
-              "RelativeDocumentMoniker": "algebraic structures\\number\\types\\integer.h",
-              "ToolTip": "A:\\projects\\algebraic objects\\algebraic structures\\number\\types\\integer.h",
-              "RelativeToolTip": "algebraic structures\\number\\types\\integer.h",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAwwBIAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-21T15:54:42.088Z"
+              "WhenOpened": "2024-06-23T15:11:25.558Z",
+              "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 64,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 137,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "basic_number.h",
-              "DocumentMoniker": "A:\\projects\\algebraic objects\\algebraic structures\\number\\basic_number.h",
-              "RelativeDocumentMoniker": "algebraic structures\\number\\basic_number.h",
-              "ToolTip": "A:\\projects\\algebraic objects\\algebraic structures\\number\\basic_number.h",
-              "RelativeToolTip": "algebraic structures\\number\\basic_number.h",
-              "ViewState": "AQIAADAAAAAAAAAAAAAAAEMAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-21T16:06:19.478Z",
+              "DocumentIndex": 3,
+              "Title": "main.cpp",
+              "DocumentMoniker": "A:\\projects\\algebraic objects\\algebraic structures\\main.cpp",
+              "RelativeDocumentMoniker": "algebraic structures\\main.cpp",
+              "ToolTip": "A:\\projects\\algebraic objects\\algebraic structures\\main.cpp",
+              "RelativeToolTip": "algebraic structures\\main.cpp",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-19T13:08:23.98Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
@@ -131,9 +90,35 @@
               "RelativeDocumentMoniker": "algebraic structures\\number\\basic_number.cpp",
               "ToolTip": "A:\\projects\\algebraic objects\\algebraic structures\\number\\basic_number.cpp",
               "RelativeToolTip": "algebraic structures\\number\\basic_number.cpp",
-              "ViewState": "AQIAAMoBAAAAAAAAAAAgwNMBAABKAAAA",
+              "ViewState": "AQIAABUBAAAAAAAAAAAgwCIBAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-22T13:08:30.13Z",
+              "WhenOpened": "2024-06-23T15:06:19.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "operation.h",
+              "DocumentMoniker": "A:\\projects\\algebraic objects\\algebraic structures\\structure\\operation.h",
+              "RelativeDocumentMoniker": "algebraic structures\\structure\\operation.h",
+              "ToolTip": "A:\\projects\\algebraic objects\\algebraic structures\\structure\\operation.h",
+              "RelativeToolTip": "algebraic structures\\structure\\operation.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-23T13:36:54.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "finite_set.h",
+              "DocumentMoniker": "A:\\projects\\algebraic objects\\algebraic structures\\structure\\finite_set.h",
+              "RelativeDocumentMoniker": "algebraic structures\\structure\\finite_set.h",
+              "ToolTip": "A:\\projects\\algebraic objects\\algebraic structures\\structure\\finite_set.h",
+              "RelativeToolTip": "algebraic structures\\structure\\finite_set.h",
+              "ViewState": "AQIAABkAAAAAAAAAAAAAAC0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-23T13:15:24.194Z",
               "EditorCaption": ""
             }
           ]

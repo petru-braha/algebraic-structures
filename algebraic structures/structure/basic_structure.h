@@ -1,6 +1,12 @@
 #pragma once
+#include "finite_set.h"
 
-class basic_structure;
+template <class numbers = basic_number, const ull n = 0>
+class basic_structure
+{
+	finite_set set
+};
+
 class semi_group;
 class monoid;
 class group;

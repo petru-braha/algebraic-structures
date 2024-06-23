@@ -1,12 +1,45 @@
 #pragma once
-#include "../number/types/natural_number.h" // these are types for the template
-#include "../number/types/integer.h"
-#include "../number/types/rational_number.h"
-#include "../number/types/real_number.h"
-#include "../number/types/complex_number.h"
+#include "../number/basic_number.h"
 
-template <class T = int, ull capacity = 0>
-struct finite_set
+template <class v = basic_number>
+class finite_set
 {
-	T set[capacity];
+	v** elements;
+	ull n;
+public:
+	finite_set();
+	finite_set(const ull& n);
+	finite_set(v** values, const ull& n);
+
+	finite_set(const finite_set& set);
+	finite_set(const finite_set&& set);
+
+	void operator = (const finite_set& set);
+	void operator = (const v*& value);
+
+	void insert_element(const v*& value);
+	void insert_element(const v*& value, const ull& index);
+	void remove_element(const v*& value);
+
+	basic_number& operator [] (const ull& index) const;
+	basic_number& get_psition (const basic_number& value) const;
+	
+	void delete_same();
+	void sort();
+
+	// algebraic function
+	operator char() const; // return how many divisors of 0 are there
+	ull get_size() const;
+
+	~finite_set();
 };
+
+template <class v = basic_number>
+finite_set<v> reunion(const finite_set<v>& set1, const finite_set<v>& set2);
+
+template <class v = basic_number>
+finite_set<v> intersection(const finite_set<v>& set1, const finite_set<v>& set2);
+
+template <class v = basic_number>
+finite_set<v> intersection(const finite_set<v>& set1, const finite_set<v>& set2);
+

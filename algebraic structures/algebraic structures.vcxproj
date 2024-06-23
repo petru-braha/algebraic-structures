@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="structure\finite_set.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="number\basic_number.cpp" />
     <ClCompile Include="number\types\complex_number.cpp" />
@@ -135,6 +136,7 @@
     <ClCompile Include="number\types\rational_number.cpp" />
     <ClCompile Include="number\types\real_number.cpp" />
     <ClCompile Include="structure\basic_structure.cpp" />
+    <ClCompile Include="structure\operation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="number\types\complex_number.h" />
@@ -146,6 +148,7 @@
     <ClInclude Include="number\types\real_number.h" />
     <ClInclude Include="structure\basic_structure.h" />
     <ClInclude Include="structure\finite_set.h" />
+    <ClInclude Include="structure\operation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

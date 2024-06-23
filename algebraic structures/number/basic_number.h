@@ -14,9 +14,9 @@ protected:
     digit_node* number = nullptr;  // root of the linked list. list goes from right to left
     ull bytes;
 
-    // at the end
+    // at the end 
     digit_node* insert_symbol(const char& symbol); // returns the previous before the added one
-    digit_node* insert_symbol(digit_node* previous, const char& symbol); // returns thr added one
+    digit_node* insert_symbol(digit_node* previous, const char& symbol); // returns thr added one AND override the allocated memory
     bool        remove_symbol();
 
 public:
@@ -30,16 +30,20 @@ public:
     basic_number(const basic_number& nr);
     basic_number(const basic_number&& nr) noexcept;
 
+    // not correct to not be used
+    virtual basic_number& operator = (float& nr);
+    virtual basic_number& operator = (const basic_number& nr);
+
     // pure functions
     virtual basic_number& operator + (const float& nr) = 0;
-    virtual basic_number& operator + (const basic_number* nr) = 0;
+    virtual basic_number& operator + (const basic_number& nr) = 0;
     virtual basic_number& operator - (const float& nr) = 0;
-    virtual basic_number& operator - (const basic_number* nr) = 0;
+    virtual basic_number& operator - (const basic_number& nr) = 0;
 
     virtual basic_number& operator * (const float& nr) = 0;
-    virtual basic_number& operator * (const basic_number* nr) = 0;
+    virtual basic_number& operator * (const basic_number& nr) = 0;
     virtual basic_number& operator / (const float& nr) = 0;
-    virtual basic_number& operator / (const basic_number* nr) = 0;
+    virtual basic_number& operator / (const basic_number& nr) = 0;
 
     virtual bool operator == (const float& nr) = 0;
     virtual bool operator == (basic_number* nr) = 0;
@@ -65,4 +69,5 @@ int  add_between(digit_node*& ptr1, digit_node* ptr2, const int& symbol);
 const char* convert_float(float nr);
 inline int digits_number(ull nr);
 inline int bytes_number(float nr);
-//operator int(floar nr);
+void reinitialise(digit_node*& root);
+int  cast_float(float nr);
