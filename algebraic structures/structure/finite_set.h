@@ -15,7 +15,6 @@ public:
 	finite_set(const finite_set&& set);
 
 	void operator = (const finite_set& set);
-	void operator = (const v*& value);
 
 	void insert_element(const v*& value);
 	void insert_element(const v*& value, const ull& index);
@@ -39,7 +38,3 @@ finite_set<v> reunion(const finite_set<v>& set1, const finite_set<v>& set2);
 
 template <class v = basic_number>
 finite_set<v> intersection(const finite_set<v>& set1, const finite_set<v>& set2);
-
-template <class v = basic_number>
-finite_set<v> intersection(const finite_set<v>& set1, const finite_set<v>& set2);
-

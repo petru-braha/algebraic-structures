@@ -4,7 +4,10 @@
 template <class numbers = basic_number, const ull n = 0>
 class basic_structure
 {
-	finite_set set
+	finite_set set;
+
+	//bool closure();
+
 };
 
 class semi_group;
