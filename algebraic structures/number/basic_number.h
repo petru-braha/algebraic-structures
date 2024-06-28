@@ -32,7 +32,7 @@ public:
 
     // not correct to not be used
     virtual basic_number& operator = (float& nr);
-    virtual basic_number& operator = (const basic_number& nr);
+    virtual basic_number& operator = (const basic_number* nr) { return *this; };
 
     // pure functions
     virtual basic_number& operator + (const float& nr) = 0;
@@ -44,6 +44,9 @@ public:
     virtual basic_number& operator * (const basic_number& nr) = 0;
     virtual basic_number& operator / (const float& nr) = 0;
     virtual basic_number& operator / (const basic_number& nr) = 0;
+
+    //virtual bool operator > (const float& nr) = 0;
+    //virtual bool operator > (const basic_number* nr) = 0;
 
     virtual bool operator == (const float& nr) = 0;
     virtual bool operator == (basic_number* nr) = 0;

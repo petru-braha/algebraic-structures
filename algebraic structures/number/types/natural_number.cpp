@@ -52,20 +52,36 @@ basic_number& natural_number::operator + (const float& nr)
     }
     
     // delete floating ooints
-    int integer = int(nr);
+    int integer = abs(int(nr));
 
     // addition with a natural number
-    natural_number* this_number = new natural_number(*this);
+    natural_number* this_number = new natural_number(*this); // making a copy of it
     ull b = this->bytes - 1;
     char carry = 0;
-    bool flag = true; // represents if b == -1
-    while (integer && flag)
+    bool flag = true; // represents if b != -1
+    
+    while (integer)
+    {
+        if (flag == false)
+            add_beginng(this_number->number, '0');
+        digit_node* actual = this_number->get_digit(b);
+        char digit = last_digit(integer) - '0' + actual->get_data() - '0' + carry;
+        
+        actual->set_data(digit % 10 + '0');
+        carry = digit / 10;
+
+        if (b)
+            b--;
+        else
+            flag = false;
+    }
+    
+    while (carry && flag) // number > integer
     {
         digit_node* actual = this_number->get_digit(b);
-        char digit = last_digit(integer) - '0' + actual->get_data() - '0';
+        char digit = actual->get_data() - '0' + carry;
 
-        // set
-        actual->set_data((digit + carry) % 10 + '0');
+        actual->set_data(digit % 10 + '0');
         carry = digit / 10;
 
         if (b)
@@ -74,19 +90,9 @@ basic_number& natural_number::operator + (const float& nr)
             flag = false;
     }
 
-    // carry
-    if (carry)
-    {
-        if (flag == true)
-        {
-            digit_node* ptr = this_number->get_digit(b);
-            char data = ptr->get_data();
-            ptr->set_data(data + carry);
-        }
-        else add_beginng(this_number->number, '1');
-    }
-    
-    this_number->print();
+    if (carry && flag == false)
+        add_beginng(this_number->number, '1');
+
     return *this_number;
 }
 

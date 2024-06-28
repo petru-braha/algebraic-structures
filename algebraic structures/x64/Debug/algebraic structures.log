@@ -1,3 +1,5 @@
-﻿  natural_number.cpp
-A:\projects\algebraic objects\algebraic structures\number\types\natural_number.cpp(221,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  main.cpp
+  natural_number.cpp
+A:\projects\algebraic objects\algebraic structures\number\types\natural_number.cpp(227,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
   algebraic structures.vcxproj -> A:\projects\algebraic objects\x64\Debug\algebraic structures.exe

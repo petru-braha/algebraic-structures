@@ -9,8 +9,8 @@ public:
     natural_number(basic_number* nr);
 
     //void operator = (float& nr);
-    //void operator = (const basic_number& nr);
-    operator natural_number();
+    natural_number& operator = (const basic_number* nr);
+    //operator natural_number();
 
     basic_number& operator + (const float& nr);
     basic_number& operator + (const basic_number& nr);

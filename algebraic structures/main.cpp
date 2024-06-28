@@ -10,14 +10,14 @@ void write_as_fraction();
 */
 int main()
 {   
-    float real = 5;
-    natural_number x(5), y(5);
-    x + y;
+    float real = 9999; // 99999 // si invers
+    natural_number x(9999), y(5);
+    x = &(x + real);
     //x - real;
-    x.print();
+    //xx.print();
     
-    y = &(x + real);
-    x.print();
-    y.print();
+    //y = &(x + real);
+    //x.print();
+    //y.print();
     return 0;
 }
