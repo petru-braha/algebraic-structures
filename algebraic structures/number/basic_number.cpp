@@ -242,8 +242,8 @@ basic_number::basic_number(const basic_number&& nr) noexcept : basic_number(nr)
 {
     delete &nr;
 }
-
-basic_number& basic_number::operator = (float& nr)
+/*
+const basic_number& basic_number::operator = (float& nr)
 {
     reinitialise(number);
     bytes = 0;
@@ -278,7 +278,7 @@ basic_number& basic_number::operator = (float& nr)
     return *this;
 }
 /*
-basic_number& basic_number::operator = (const basic_number* nr)
+basic_number& basic_number::operator = (const basic_number& nr)
 {
     digit_node* it_nr = nr.get_number();
     nr.print();

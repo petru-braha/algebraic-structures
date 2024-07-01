@@ -3,21 +3,16 @@
 #include "number/basic_number.h"
 #include "number/types/natural_number.h"
 
-/*
-void reduction();
-void calculate();
-void write_as_fraction();
-*/
+
 int main()
 {   
-    float real = 9999; // 99999 // si invers
-    natural_number x(9999), y(5);
-    x = &(x + real);
-    //x - real;
-    //xx.print();
+    // declaration
+    float real = 12346; // 99999 // si invers
+    natural_number x(15), y(5);
     
-    //y = &(x + real);
-    //x.print();
-    //y.print();
+    // actual testing
+    natural_number z;
+    z = x + y;
+    z.print();
     return 0;
 }

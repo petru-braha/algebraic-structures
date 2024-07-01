@@ -30,3 +30,5 @@ public:
     void print() const;
     ~integer();
 };
+
+// abs function

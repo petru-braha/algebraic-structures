@@ -56,3 +56,5 @@ restrictions will appear only in child classes
 
 9. a float will be converted to basic_number with only two floating points
 0. it is not the duty of a natural number to simplify a rational / real number
+
+1. basic_number stays as an abstract class

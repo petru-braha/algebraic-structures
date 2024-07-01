@@ -19,16 +19,16 @@ natural_number::natural_number(float nr) : basic_number(nr)
     }
 }
 
-natural_number::natural_number(basic_number* nr) // should not be done by casting to float int (what if the number is bigger than INT_MAX?)
+natural_number::natural_number(const basic_number& nr) // should not be done by casting to float int (what if the number is bigger than INT_MAX?)
 {
     bytes = 0;
-    if (nr == nullptr || nr->get_number() == nullptr)
+    if (nr.get_number() == nullptr)
     {
         concatenation(number, '0', bytes);
         return;
     }
 
-    digit_node* it = nr->get_number();
+    digit_node* it = nr.get_number();
     if (it->get_data() == '-')
         it = it->next;
 
@@ -39,10 +39,39 @@ natural_number::natural_number(basic_number* nr) // should not be done by castin
     }
 }
 
+const natural_number& natural_number::operator = (float& nr)
+{
+    int integer = abs((int)nr);
+    reinitialise(number);
+    insert_symbol(last_digit(integer));
+
+    while (integer)
+        add_beginng(number, last_digit(integer));
+    
+    return *this;
+}
+
+const natural_number& natural_number::operator = (const natural_number& nr)
+{
+    reinitialise(number);
+    digit_node* it = number, * it_nr = nr.get_number();
+
+    it = insert_symbol(it_nr->get_data());
+    it_nr = it_nr->next;
+
+    while (it_nr)
+    {
+        it = insert_symbol(it, it_nr->get_data());
+        it_nr = it_nr->next;
+    }
+
+    return *this;
+}
+
 //---------------------------------------------------------------------------------------------------
 // operators:
 
-basic_number& natural_number::operator + (const float& nr)
+const natural_number& natural_number::operator + (const float& nr)
 {
     // operator -
     if (nr < 0)
@@ -96,7 +125,7 @@ basic_number& natural_number::operator + (const float& nr)
     return *this_number;
 }
 
-basic_number& natural_number::operator + (const basic_number& nr)
+const natural_number& natural_number::operator + (const basic_number& nr)
 {
     // operator -
     if (nr.get_number()->get_data() == '-')
@@ -149,7 +178,7 @@ basic_number& natural_number::operator + (const basic_number& nr)
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-basic_number& natural_number::operator - (const float& nr)
+const natural_number& natural_number::operator - (const float& nr)
 {
     // operator +
     if (nr < 0)
@@ -204,15 +233,15 @@ basic_number& natural_number::operator - (const float& nr)
     return *this;
 }
 
-basic_number& natural_number::operator - (const basic_number& nr)
+const natural_number& natural_number::operator - (const basic_number& nr)
 {
     return *this;
 
 }
 
-basic_number& natural_number::operator * (const float& nr)
+const natural_number& natural_number::operator * (const float& nr)
 {
-    natural_number copy(this);
+    natural_number copy(*this);
     for (int i = 0; i < cast_float(nr); i++)
         *this + copy;
     
@@ -221,9 +250,9 @@ basic_number& natural_number::operator * (const float& nr)
     return *this;
 }
 
-basic_number& natural_number::operator * (const basic_number& nr)
+const natural_number& natural_number::operator * (const basic_number& nr)
 {
-    natural_number copy(this);
+    natural_number copy(*this);
     natural_number it, n(cast_float(nr));
     while ( (it == n) == false )
     {
@@ -237,12 +266,12 @@ basic_number& natural_number::operator * (const basic_number& nr)
     return *this;
 }
 
-basic_number& natural_number::operator / (const float& nr)
+const natural_number& natural_number::operator / (const float& nr)
 {
     return *this;
 }
 
-basic_number& natural_number::operator / (const basic_number& nr)
+const natural_number& natural_number::operator / (const basic_number& nr)
 {
     return *this;
 }
@@ -251,7 +280,7 @@ basic_number& natural_number::operator / (const basic_number& nr)
 
 bool natural_number::operator == (const float& nr)
 {
-    if (nr < 0 || nr != (int)nr)
+    if (nr < 0 || nr != abs((int)nr));
         return false;
 
     int integer = (int)nr;
@@ -277,12 +306,12 @@ bool natural_number::operator == (const float& nr)
     return true;
 }
 
-bool natural_number::operator == (basic_number* nr)
+bool natural_number::operator == (const basic_number& nr)
 {
-    if (this->bytes != nr->get_bytes() || nr->get_number()->get_data() == '-')
+    if (this->bytes != nr.get_bytes() || nr.get_number()->get_data() == '-')
         return false;
 
-    digit_node* it = number, * it_nr = nr->get_number();
+    digit_node* it = number, * it_nr = nr.get_number();
     while (it)
     {
         if (it->get_data() != it_nr->get_data())

@@ -10,6 +10,7 @@
 
 class basic_number // the most general number, abstract class => complex
 {
+    typedef const basic_number& b_nr;
 protected:
     digit_node* number = nullptr;  // root of the linked list. list goes from right to left
     ull bytes;
@@ -21,7 +22,7 @@ protected:
 
 public:
     basic_number();
-    basic_number(float nr);   // i want to create a copy of the number, general function, small numbers
+    basic_number(float nr);   
     basic_number(float nr0, float nr1);
 
     basic_number(const char* buffer); // the actual big numbers will be placed with this function
@@ -30,26 +31,22 @@ public:
     basic_number(const basic_number& nr);
     basic_number(const basic_number&& nr) noexcept;
 
-    // not correct to not be used
-    virtual basic_number& operator = (float& nr);
-    virtual basic_number& operator = (const basic_number* nr) { return *this; };
-
     // pure functions
-    virtual basic_number& operator + (const float& nr) = 0;
-    virtual basic_number& operator + (const basic_number& nr) = 0;
-    virtual basic_number& operator - (const float& nr) = 0;
-    virtual basic_number& operator - (const basic_number& nr) = 0;
+    virtual b_nr operator + (const float& nr) = 0;
+    virtual b_nr operator + (const basic_number& nr) = 0;
+    virtual b_nr operator - (const float& nr) = 0;
+    virtual b_nr operator - (const basic_number& nr) = 0;
 
-    virtual basic_number& operator * (const float& nr) = 0;
-    virtual basic_number& operator * (const basic_number& nr) = 0;
-    virtual basic_number& operator / (const float& nr) = 0;
-    virtual basic_number& operator / (const basic_number& nr) = 0;
+    virtual b_nr operator * (const float& nr) = 0;
+    virtual b_nr operator * (const basic_number& nr) = 0;
+    virtual b_nr operator / (const float& nr) = 0;
+    virtual b_nr operator / (const basic_number& nr) = 0;
 
     //virtual bool operator > (const float& nr) = 0;
     //virtual bool operator > (const basic_number* nr) = 0;
 
     virtual bool operator == (const float& nr) = 0;
-    virtual bool operator == (basic_number* nr) = 0;
+    virtual bool operator == (const basic_number& nr) = 0;
 
 
     // if possible (small enough) else returns -1
