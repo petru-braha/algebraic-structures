@@ -1,0 +1,26 @@
+natural_number operator + :
+
+check for - operator
+
+delete floating points
+
+while(second_operant); // get his last digit and add it 
+
+while (carry && flag) // number > integer
+{
+    digit_node* actual = this_number->get_digit(b);
+    char digit = actual->get_data() - '0' + carry;
+
+    actual->set_data(digit % 10 + '0');
+    carry = digit / 10;
+
+    if (b)
+        b--;
+    else
+        flag = false;
+}
+
+if (carry && flag == false)
+    add_beginng(this_number->number, '1');
+
+- 

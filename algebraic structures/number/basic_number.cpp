@@ -75,6 +75,30 @@ bool basic_number::remove_symbol()
     return true;
 }
 
+bool basic_number::remove_symbol(const ull& pos)
+{
+    digit_node* it = number, * nxt = number->next;
+    if (pos == 0)
+    {
+        number = number->next;
+        delete it;
+        return true;
+    }
+
+    for (ull i = 1; i < pos && nxt; i++)
+    {
+        it = nxt;
+        nxt = nxt->next;
+    }
+
+    if (nxt == NULL)
+        return false;
+
+    it->next = nxt->next;
+    delete nxt;
+    return true;
+}
+
 //-------------------------------------------------------------------------------------------
 // helper functions:
 
@@ -546,12 +570,4 @@ void reinitialise(digit_node*& root)
     }
 
     root = new digit_node('0');
-}
-
-int cast_float(float nr)
-{
-    nr *= 10;
-    int integer = (int)nr;
-    integer = integer % 10;
-    return integer >= 5 ? (int)nr + 1 : (int)nr;
 }

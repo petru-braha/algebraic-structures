@@ -19,6 +19,7 @@ protected:
     digit_node* insert_symbol(const char& symbol); // returns the previous before the added one
     digit_node* insert_symbol(digit_node* previous, const char& symbol); // returns thr added one AND override the allocated memory
     bool        remove_symbol();
+    bool        remove_symbol(const ull& pos);
 
 public:
     basic_number();
@@ -54,14 +55,20 @@ public:
     virtual operator float() const;
 
     digit_node* get_digit(ull i) const;
-    digit_node* get_number() const;
+    digit_node* get_number() const; // get_digit(0)
     ull         get_bytes () const;
+    virtual ull get_digits() const = 0;
     virtual void print() const = 0;
+
+    virtual ~basic_number() {};
+
+    // friend functions
 };
 
 int concatenation(digit_node*& ptr, const char& symbol, ull& bytes);
 
 char last_digit(int& nr);
+
 void add_beginng(digit_node*& ptr, const char& symbol);
 void add_beginng(digit_node*& previous, digit_node*& ptr, const char& symbol);
 int  add_between(digit_node*& ptr1, digit_node* ptr2, const int& symbol);
@@ -70,4 +77,3 @@ const char* convert_float(float nr);
 inline int digits_number(ull nr);
 inline int bytes_number(float nr);
 void reinitialise(digit_node*& root);
-int  cast_float(float nr);

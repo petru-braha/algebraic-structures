@@ -7,12 +7,13 @@
 int main()
 {   
     // declaration
-    float real = 12346; // 99999 // si invers
-    natural_number x(15), y(5);
+    float real = 3; // 99999 // si invers
+    natural_number x(555), y(555);
     
     // actual testing
-    natural_number z;
-    z = x + y;
+    natural_number z(2000);
+    z = z * real;
     z.print();
+
     return 0;
 }
