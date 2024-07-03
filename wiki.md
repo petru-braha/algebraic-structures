@@ -1,4 +1,5 @@
 ### Mistakes:
+- will be revisited in the version 2
 1. the addition between two big numbers is in O(n^2)
 
 ### Journal:
@@ -56,5 +57,3 @@ restrictions will appear only in child classes
 
 9. a float will be converted to basic_number with only two floating points
 0. it is not the duty of a natural number to simplify a rational / real number
-
-1. basic_number stays as an abstract class

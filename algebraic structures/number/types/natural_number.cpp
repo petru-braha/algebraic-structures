@@ -70,7 +70,7 @@ const natural_number& natural_number::operator = (const natural_number& nr)
     return *this;
 }
 
-//---------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------
 // operators:
 
 const natural_number& natural_number::operator + (const float& nr)
@@ -304,29 +304,32 @@ const natural_number& natural_number::operator - (const basic_number& nr)
 
 const natural_number& natural_number::operator * (const float& nr)
 {
+    
     int n = abs((int)cast_float(nr));
     natural_number copy(*this), * this_number = new natural_number(*this);
     for (int i = 0; i < n; i++)
         *this_number = *this_number + copy;
     
+    if (n == 0)
+        return *(new natural_number);
     return *this_number;
 }
 
 const natural_number& natural_number::operator * (const basic_number& nr)
 {
     if (nr.get_number()->get_data() == '0')
-        reinitialise(number);
-
+        return *(new natural_number);
+    
     natural_number copy(*this), * this_number = new natural_number(*this);
-    natural_number it, n(nr);
-    while ((it == n) == false)
+    natural_number it(1);
+    while ((it == nr) == false)
     {
         float one = 1.0f;
         *this_number = *this_number + copy;
-        it + one;
+        it = it + one;
     }
 
-    return *this;
+    return *this_number;
 }
 
 const natural_number& natural_number::operator / (const float& nr)
@@ -403,7 +406,7 @@ bool natural_number::operator == (const basic_number& nr)
     return true;
 }
 
-//---------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------
 // constant functions:
 
 natural_number::operator int() const

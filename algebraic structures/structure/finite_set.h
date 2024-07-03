@@ -4,12 +4,13 @@
 template <class v = basic_number>
 class finite_set
 {
-	v** elements;
+protected:
+	v* elements;
 	ull n;
 public:
 	finite_set();
 	finite_set(const ull& n);
-	finite_set(v** values, const ull& n);
+	finite_set(v* values, const ull& n);
 
 	finite_set(const finite_set& set);
 	finite_set(const finite_set&& set);
@@ -20,15 +21,15 @@ public:
 	void insert_element(const v*& value, const ull& index);
 	void remove_element(const v*& value);
 
-	basic_number& operator [] (const ull& index) const;
-	basic_number& get_psition (const basic_number& value) const;
+	const basic_number& operator [] (const ull& index) const;
+	const basic_number& get_psition (const v& value) const;
 	
 	void delete_same();
 	void sort();
 
 	// algebraic function
 	operator char() const; // return how many divisors of 0 are there
-	ull get_size() const;
+	ull  get_size() const;
 
 	~finite_set();
 };
