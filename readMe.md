@@ -1,4 +1,4 @@
-# General overview:
+# Algebra
 
 ## TO DO / actual strategy:
 - i have doubts about the implementation of the numbers. i will now focus only on sets
